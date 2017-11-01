@@ -3,12 +3,18 @@
   <h1>
     Welcome to {{title}}!!
   </h1>
-  <h2 ng-bind="msg"></h2>
+  <h2>{{msg}}</h2>
 </div>
 <h2>Here are some links to help you start: </h2>
 <h4>{{items[0].name}}</h4>
+<input type="text" [(ngModel)]="msg" >
 <ul ng-show="item.length">
-  <li *ngFor="let item of items">
+  <li *ngFor="let item of items" (click)="goDetail(item)">
+    {{item.name}}
+  </li>
+</ul>
+<ul ng-show="item.length">
+  <li *ngFor="let item of heros" (click)="goDetail(item)">
     {{item.name}}
   </li>
 </ul>

@@ -38,6 +38,14 @@ const Routers = function ({ history, app }) {
             }, 'user')
           },
         }, {
+          path: 'declareQRCodePage',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/user'))
+              cb(null, require('./routes/declare-detail/'))
+            }, 'usedeclareQRCodePager')
+          },
+        }, {
           path: 'user/:id',
           getComponent (nextState, cb) {
             require.ensure([], require => {

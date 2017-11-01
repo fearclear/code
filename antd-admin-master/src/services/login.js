@@ -3,9 +3,10 @@ const { api } = config
 const { userLogin } = api
 
 export async function login (data) {
+  console.log(data, 'data');
   return request({
     url: userLogin,
-    method: 'get',
+    method: 'post',
     data,
   })
 }

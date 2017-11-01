@@ -1,2 +1,3 @@
-let a:number = 3
+let a = 3
+a = 123
 console.log(a);
