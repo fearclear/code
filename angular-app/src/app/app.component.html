@@ -1,21 +1,7 @@
-<!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-  <h2>{{msg}}</h2>
-</div>
-<h2>Here are some links to help you start: </h2>
-<h4>{{items[0].name}}</h4>
-<input type="text" [(ngModel)]="msg" >
-<ul ng-show="item.length">
-  <li *ngFor="let item of items" (click)="goDetail(item)">
-    {{item.name}}
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heros" (click)=onSelect(hero) [class.selected]="hero === selectedHero" >
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>
-<ul ng-show="item.length">
-  <li *ngFor="let item of heros" (click)="goDetail(item)">
-    {{item.name}}
-  </li>
-</ul>
-
+<hero-detail [hero]="selectedHero" ></hero-detail>
