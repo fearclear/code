@@ -1,18 +1,12 @@
-import { Component } from '@angular/core';
-
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
-
+import { Component, OnInit } from '@angular/core';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Tour of Heroes';
-  heros: Hero[];
-  selectedHero: Hero;
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero
-  }
+export class AppComponent implements OnInit {
+    title = 'Tour of Heroes'
+    constructor() { }
+
+    ngOnInit() { }
 }
