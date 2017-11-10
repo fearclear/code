@@ -9,13 +9,6 @@
             "request": "launch",
             "name": "main",
             "program": "${file}",
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "business",
-            "program": "${file}",
             "cwd": "${fileDirname}"
         }
     ]

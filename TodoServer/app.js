@@ -23,6 +23,7 @@ app.use(logger('dev'));
 app.use(busboy());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/angular-test-app', express.static(path.join(__dirname, 'public/angular-test-app')))
 
 app.use('/', index);
 app.use('/editor', editor);
