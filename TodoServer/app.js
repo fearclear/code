@@ -8,6 +8,7 @@ const util = require('util');
 const fs = require('fs');
 const index = require('./routes/index');
 const editor = require('./routes/editor');
+const port = require('./routes/port');
 var app = express();
 
 // view engine setup
@@ -31,6 +32,7 @@ app.get('/angular-test-app/*', function (req, res, next){
 });
 app.use('/', index);
 app.use('/editor', editor);
+app.use('/port', port);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

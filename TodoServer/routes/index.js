@@ -18,4 +18,7 @@ router.all('*', function(req, res, next) {
 router.get('/add', function(req, res, next){
   res.json([{ad: 123}])
 })
+router.get('/', function(req, res, next) {
+  res.send(123);
+});
 module.exports = router;
