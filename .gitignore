@@ -12,7 +12,6 @@ files/
 node_modules/
 
 # IDEs and editors
-/.idea
 .idea/
 .project
 .classpath
@@ -35,7 +34,7 @@ node_modules/
 */libpeerconnection.log
 */npm-debug.log
 */testem.log
-/typings
+typings/
 
 # e2e
 e2e/*.js
