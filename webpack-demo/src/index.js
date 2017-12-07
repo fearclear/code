@@ -1,6 +1,4 @@
 import _ from 'lodash';
-import printMe from './print.js';
-import './style.css';
 import { comment } from 'postcss';
 function component() {
     let ele = document.createElement('div');
@@ -9,7 +7,10 @@ function component() {
     const btn = document.createElement('button');
 
     btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
+    btn.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
+        let print = module.default;
+        print();
+    })
     ele.appendChild(btn);
     return ele;
 }
