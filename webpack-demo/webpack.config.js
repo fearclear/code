@@ -5,7 +5,8 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: './src/index.js'
+        app: './src/index.js',
+        another: './src/another-module.js'
     },
     devtool:'inline-source-map',
     devServer: {
@@ -26,9 +27,12 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'Hot Module Replacement'
+            title: 'Code Splitting'
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common', //Specify the common bundle's name.
+        })
     ],
     output: {
         filename: '[name].bundle.js',
