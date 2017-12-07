@@ -6,7 +6,10 @@ const webpack = require('webpack');
 module.exports = {
     entry: {
         app: './src/index.js',
-        another: './src/another-module.js'
+        another: './src/another-module.js',
+        vendor: [
+            'lodash'
+        ]
     },
     devtool:'inline-source-map',
     devServer: {
@@ -27,15 +30,19 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'Code Splitting'
+            title: 'caching'
         }),
+        new webpack.HashedModuleIdsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common', //Specify the common bundle's name.
         })
     ],
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'dist')
     }
 }

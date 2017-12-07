@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack --progess --watch",
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --open",
+    "refresh": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
