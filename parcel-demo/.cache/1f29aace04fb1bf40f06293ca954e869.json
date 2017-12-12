@@ -1,0 +1,1 @@
+{"dependencies":[],"generated":{"js":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nclass App {\n  constructor() {\n    this.name = 'api';\n    this.version = '1.0.0';\n  }\n  warning() {\n    console.warn('warning');\n  }\n}\nexports.default = App;"},"hash":"27c14137138d28fb530fc4ee78545104"}
