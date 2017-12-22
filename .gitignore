@@ -12,6 +12,7 @@ files/
 node_modules/
 
 # IDEs and editors
+.cache/
 .idea/
 .project
 .classpath
