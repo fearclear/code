@@ -18,6 +18,11 @@ module.exports = {
   // add your custom rules here
   rules: {
     'space-before-function-paren': ['error', 'never'],
+    'keyword-spacing': ['error', { 'overrides': {
+      'if': { 'after': false },
+      'for': { 'after': false },
+      'while': { 'after': false }
+    }, 'before': false }],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
