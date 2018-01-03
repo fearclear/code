@@ -1,33 +1,11 @@
 {
   "presets": [
-    [
-      "env",
-      {
-        "modules": false,
-        "targets": {
-          "browsers": [
-            "> 1%",
-            "last 2 versions",
-            "not ie <= 8"
-          ]
-        }
-      }
-    ],
-    "stage-2"
+    ["es2015", { "modules": false }]
   ],
-  "plugins": [
-    [
-      "component",
-      [
-        {
-          "libraryName": "element-ui",
-          "styleLibraryName": "theme-chock"
-        },
-        {
-          "libraryName": "element-ui",
-          "styleLibraryName": "~theme"
-        }
-      ]
-    ]
-  ]
+  "plugins": [["component", [
+    {
+      "libraryName": "element-ui",
+      "styleLibraryName": "~theme"
+    }
+  ]]]
 }

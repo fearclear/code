@@ -61,9 +61,15 @@
         </el-dropdown-menu>
       </el-dropdown>
       <span>王小虎</span>
-      <el-button type="primary">123</el-button>
+      <el-button type="primary" @click="alert">点击</el-button>
     </el-header>
     
+      <el-alert
+        title="成功提示的文案"
+        type="success"
+        center
+        show-icon>
+      </el-alert>
     <el-main>
       <el-table :data="tableData">
         <el-table-column prop="date" label="日期" width="140">
@@ -89,6 +95,20 @@ export default {
     }
     return {
       tableData: Array(20).fill(item)
+    }
+  },
+  methods: {
+    alert() {
+      console.log(Notification)
+      const h = this.$createElement
+      this.$notify({
+        title: '标题名称',
+        message: h(
+          'i',
+          { style: 'color: teal' },
+          '这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案'
+        )
+      })
     }
   }
 }
