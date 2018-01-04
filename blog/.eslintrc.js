@@ -21,8 +21,9 @@ module.exports = {
     'keyword-spacing': ['error', { 'overrides': {
       'if': { 'after': false },
       'for': { 'after': false },
-      'while': { 'after': false }
-    }, 'before': false }],
+      'while': { 'after': false },
+      'else': { 'before': false }
+    }}],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
