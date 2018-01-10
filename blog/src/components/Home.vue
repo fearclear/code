@@ -43,11 +43,7 @@
         </el-breadcrumb>
       </el-col>
       <el-col :span="16">
-        <div id="box">
-          <ul class="con1">
-            <li v-for="item in items" class="anim" :key="item.id" >{{item}}</li>
-          </ul>
-        </div>
+        
       </el-col>
     </el-row>
     <el-container>
