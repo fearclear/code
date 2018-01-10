@@ -1,4 +1,6 @@
 import Vue from 'vue'
+// import '../theme/display.css'
+import './index.css'
 import {
   Pagination,
   Dialog,

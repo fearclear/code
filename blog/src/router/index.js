@@ -4,7 +4,6 @@ import Home from '@/components/Home'
 const Hero = resolve => require(['@/components/Hero.vue'], resolve)
 
 Vue.use(Router)
-
 export default new Router({
   mode: 'history',
   routes: [

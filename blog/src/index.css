@@ -1,0 +1,63 @@
+/* reset */
+body{
+  margin: 0;
+  padding: 0;
+  min-width: 768px;
+}
+/* 字体设置 */
+.ft-main-title{
+  font-size: 20px;/* 主标题 */
+}
+.ft-title{
+  font-size: 18px;/* 标题 */
+}
+.ft-sm-title{
+  font-size: 16px;/* 小标题 */
+}
+.ft-text{
+  font-size: 14px;/* 正文 */
+}
+.tf-sm-text{
+  font-size: 13px;/* 正文(小) */
+}
+.ft-aside-text{
+  font-size: 12px;/* 辅助文字 */
+}
+.ft-no-decoration{
+  text-decoration: none;
+}
+/* 颜色设置 */
+.main-text{
+  color: #409eff;
+}
+.main-bd{
+  background-color: #409eff;
+}
+.success-text{
+  color: #67c23a;
+}
+.success-bd{
+  background-color: #67c23a;
+}
+.warning-text{
+  color: #e6a23c;
+}
+.warning-bd{
+  background-color: #e6a23c;
+}
+.danger-text{
+  color: #f56c6c;
+}
+.danger-bd{
+  background-color: #f56c6c;
+}
+.info-text{
+  color: #909399;
+}
+.info-bd{
+  background-color: #909399;
+}
+/* 间距 */
+.ml-10{
+  margin-left: 10px;
+}
