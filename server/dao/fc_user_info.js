@@ -13,20 +13,26 @@ const userSchema = new Schema({
 const UserDoc = mongoose.model('fc_user_info', userSchema)
 
 let one = new UserDoc({
-  userId: '123',
+  userId: '1234',
   userName: 'Mike',
   age: 17
 })
 
-async function foo() {
-  let t = await one.save((err, doc) => {
-    if(err) { throw err }
-    console.log(doc)
+function foo() {
+  return new Promise((resolve, reject) => {
+    one.save((err, doc) => {
+      if(err) {
+        reject(err)
+      }else {
+        resolve(doc)
+      }
+    })
   })
-  console.log(t, 'await')
 }
-
-foo()
+async function bar() {
+  await foo()
+}
+bar()
 
 function addUser(data) {
   let userInfo = new UserDoc(data)
@@ -38,3 +44,4 @@ function addUser(data) {
     }
   })
 }
+exports.addUser = addUser
