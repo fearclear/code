@@ -1,3 +1,10 @@
+/**
+ * @namespace 数据库连接模块
+ * @description 连接数据库
+ * @name connection
+ * @author fearclear
+ * @export { mongoose, connect, disconnect }
+ */
 const mongoose = require('mongoose')
 const dbUrl = 'mongodb://localhost:27017/blog'
 let db = null
@@ -25,5 +32,3 @@ module.exports = {
   connect, // 连接数据库
   disconnect // 断开数据库连接
 }
-
-connect()
