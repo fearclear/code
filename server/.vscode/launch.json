@@ -7,14 +7,13 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "extra",
-            "program": "${file}",
-            "cwd": "${fileDirname}"
+            "name": "main",
+            "program": "${workspaceFolder}/bin/www",
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "main",
+            "name": "extra",
             "program": "${file}",
             "cwd": "${fileDirname}"
         }

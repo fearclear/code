@@ -1,7 +1,9 @@
 const util = require('./util.js')
-const blog = require('./blog')
+const userInfo = require('./user_info')
+const connection = require('./connection')
 
 module.exports = {
   util,
-  blog
+  userInfo,
+  connection
 }
