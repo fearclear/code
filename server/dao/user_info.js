@@ -5,8 +5,8 @@
  * @author fearclear
  * @export { addUser, getUser, updateUser, removeUser }
  */
-const { handleResult } = require('../util')
-const { mongoose } = require('../connection')
+const { handleResult } = require('./util')
+const { mongoose } = require('./connection')
 const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 const userSchema = new Schema({
