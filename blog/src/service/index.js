@@ -1,5 +1,6 @@
-import sign from './sign'
+import { signUp, signIn } from './sign'
 
 module.exports = {
-  sign
+  signUp,
+  signIn
 }

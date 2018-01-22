@@ -15,7 +15,7 @@
           <el-input v-model="form.passwordConfirm" type="password" placeholder="再次输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-button class="sign-button" type="primary" @click="signIn('form')">登陆</el-button>
+            <el-button class="sign-button" type="primary" @click="signUp('form')">注册</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -23,10 +23,18 @@
 </template>
 
 <script>
-import {JSEncrypt} from 'jsencrypt'
-console.log(JSEncrypt)
+import { signUp } from '../../service'
 export default {
   data() {
+    let checkPassword = (rule, value, callback) => {
+      if(value === '') {
+        callback(new Error('请再次输入密码'))
+      }else if(value !== this.form.password) {
+        callback(new Error('两次输入密码不一致!'))
+      }else {
+        callback()
+      }
+    }
     return {
       Kurumi: {background: `url(${require('^/Kurumi.jpg')}) no-repeat`, backgroundSize: 'cover'},
       form: {
@@ -41,13 +49,14 @@ export default {
           { required: true, message: '请输入用密码', trigger: 'blur' }
         ],
         passwordConfirm: [
-          { required: true, message: '再次输入密码', trigger: 'blur' }
+          {validator: checkPassword, trigger: 'blur'}
         ]
       }
     }
   },
   methods: {
-    signIn(form) {
+    signUp(form) {
+      console.log(signUp)
       // do something
     }
   }
@@ -76,7 +85,7 @@ export default {
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 0 0 100px rgba(0,0,0,.08);
   padding: 20px;
-  background: rgba(51,51,51, .1);
+  background: rgba(255, 255, 255, .1);
   
 }
 .sign-button{

@@ -103,23 +103,11 @@ export default function request(options) {
     .then((response) => {
       const { statusText, status } = response
       let data = options.fetchType === 'YQL' ? response.data.query.results.json : response.data
-      /*
-      *  如果是数组，将data放进list里面，否则会出现
-      *   {
-      *     success: true,
-      *     message: '成功',
-      *     statusCode: 200,
-      *     {id: 1},
-      *     {id: 2}
-      *   }
-      *   (数组扩展)的情况
-      */
       if(data instanceof Array) {
         data = {
           list: data
         }
       }
-
       return {
         success: true,
         message: statusText,

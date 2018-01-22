@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 const SignIn = resolve => require(['@/components/sign/signIn.vue'], resolve)
+const SignUp = resolve => require(['@/components/sign/signUp.vue'], resolve)
 
 Vue.use(Router)
 export default new Router({
@@ -20,6 +21,11 @@ export default new Router({
       path: '/signIn',
       name: 'SignIn',
       component: SignIn
+    },
+    {
+      path: '/signUp',
+      name: 'SignUp',
+      component: SignUp
     },
     {
       path: '*',

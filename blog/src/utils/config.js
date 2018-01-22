@@ -4,6 +4,7 @@ module.exports = {
   CORS: ['http://127.0.0.1:3000/blog'],
   YQL: [''],
   API: {
-    signIn: `${URL}/signIn`
+    signUpUrl: `${URL}/signUp`,
+    signInUrl: `${URL}/signIn`
   }
 }

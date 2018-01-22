@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import {JSEncrypt} from 'jsencrypt'
-console.log(JSEncrypt)
 export default {
   data() {
     return {
@@ -70,7 +68,7 @@ export default {
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 0 0 100px rgba(0,0,0,.08);
   padding: 20px;
-  background: rgba(51,51,51, .1);
+  background: rgba(255, 255, 255, .1);
   
 }
 .sign-button{

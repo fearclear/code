@@ -1,7 +1,15 @@
-import { request, config } from '../util'
+import { request, config } from '../utils'
 
 const { API } = config
-const { signInUrl } = API
+const { signUpUrl, signInUrl } = API
+
+async function signUp(data) {
+  return request({
+    url: signUpUrl,
+    method: 'post',
+    data
+  })
+}
 
 async function signIn(data) {
   return request({
@@ -12,5 +20,6 @@ async function signIn(data) {
 }
 
 module.exports = {
+  signUp,
   signIn
 }
