@@ -76,6 +76,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.31",
     "karma-webpack": "^2.0.2",
+    "lodash": "^4.17.4",
     "md5": "^2.2.1",
     "mocha": "^3.2.0",
     "nightwatch": "^0.9.12",

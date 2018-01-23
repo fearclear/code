@@ -1,3 +1,10 @@
+/**
+ * @namespace 登陆登出模块
+ * @description 登陆相关请求
+ * @name sign
+ * @author fearclear
+ * @export { signUp, signIn }
+ */
 import { request, config } from '../utils'
 
 const { API } = config

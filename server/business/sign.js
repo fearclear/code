@@ -10,30 +10,86 @@ const dao = require('../dao')
 function signUp(req, res, next) {
   let data = req.body
   if(!data.userName) {
-    res.status(403).send('请输入用户名')
+    next({
+      status: 400,
+      text: '用户名不可为空'
+    })
   }else if(!data.password) {
-    res.status(403).send('请输入密码')
+    next({
+      status: 400,
+      text: '密码不可为空'
+    })
   }else if(!data.email) {
-    res.status(403).send('请输入邮箱地址')
+    next({
+      status: 400,
+      text: '邮箱地址不可为空'
+    })
   }else if(!data.passwordConfirm || data.password !== data.passwordConfirm) {
-    res.status(403).send('两次密码不一致')
+    next({
+      status: 400,
+      text: '两次密码不一致'
+    })
+  }else {
+    dao.userInfo.getUser(data)
+      .then(doc => {
+        if(doc) {
+          if(doc.userName === data.userName) {
+            next({
+              status: 400,
+              text: '用户名已存在'
+            })
+          }else if(doc.email === data.email) {
+            next({
+              status: 400,
+              text: '邮箱已注册'
+            })
+          }
+        }else {
+          dao.userInfo.addUser(data)
+            .then(doc => {
+              res.send({
+                status: 200,
+                text: '注册成功'
+              })
+            }, err => next(err))
+        }
+      })
   }
-  dao.getUser(data).then(res => console.log(res), err => console.log(err, 'err'))
-  res.send('......')
 }
 // 登录
 function signIn(req, res, next) {
   let data = req.body
   if(!data.userName || !data.password) {
-    res.status(403).send('请输入正确的用户名或密码')
+    next({
+      status: 400,
+      text: '用户名密码不可为空'
+    })
+  }else {
+    dao.userInfo.getUser(data)
+      .then((doc) => {
+        if(doc) {
+          if(doc.password === data.password) {
+            let data = {
+              userId: doc.userId,
+              userName: doc.userName,
+              registerDate: doc.registerDate,
+              email: doc.email
+            }
+            res.send(data)
+          }else {
+            next({
+              status: 400,
+              text: '密码错误'
+            })
+          }
+        }else {
+          next({
+            status: 400,
+            text: '用户不存在'
+          })
+        }
+      }, err => next(err))
   }
-  dao.userInfo.getUser(data)
-    .then((doc) => {
-      if(doc.password === data.password) {
-        console.log(doc)
-        res.send(doc)
-      }
-    }, err => next(err))
 }
 
 module.exports = {

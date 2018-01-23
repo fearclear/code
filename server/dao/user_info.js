@@ -17,22 +17,16 @@ const userSchema = new Schema({
   registerDate: { type: Date, default: Date.now() }
 })
 const UserDoc = mongoose.model('user_info', userSchema)
-function _addUser(data) {
+// 添加用户
+function addUser(data) {
+  data.userId = mongoose.Types.ObjectId()
+  data._id = data.userId
   let userInfo = new UserDoc(data)
   return new Promise((resolve, reject) => {
     userInfo.save(handleResult.bind(this, resolve, reject))
   })
 }
-
-async function addUser(data) {
-  let doc = await getUser({userName: data.userName})
-  if(doc) {
-    return '用户名重复'
-  }else {
-    return _addUser(data)
-  }
-}
-
+// 获取用户
 function getUser(data) {
   if(data.userId) {
     return new Promise((resolve, reject) => {
@@ -48,7 +42,7 @@ function getUser(data) {
     })
   }
 }
-
+// 更新用户
 function updateUser(data, update) {
   if(data.userId) {
     return new Promise((resolve, reject) => {
@@ -60,7 +54,7 @@ function updateUser(data, update) {
     })
   }
 }
-
+// 删除用户
 function removeUser(data) {
   if(data.userId) {
     return new Promise((resolve, reject) => {

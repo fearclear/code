@@ -7,12 +7,12 @@ import jsonp from 'jsonp'
 import lodash from 'lodash'
 import pathToRegexp from 'path-to-regexp'
 import { YQL, CORS } from './config'
-
+import { Message } from 'element-ui'
 // 配置默认请求头
-// axios.defaults.headers.common[''] = ''
+axios.defaults.headers.common['x-fc-version'] = '1.0.0'
 // 配置post请求方式
-axios.defaults.headers.post['Content-type'] = 'application/x-www-form-urlencoded'
-axios.defaults.headers.put['Content-type'] = 'application/x-www-form-urlencoded'
+// axios.defaults.headers.post['Content-type'] = 'application/x-www-form-urlencoded;charset=utf-8'
+// axios.defaults.headers.put['Content-type'] = 'application/x-www-form-urlencoded;charset=utf-8'
 /**
  * @author fearclear
  * @description fetch函数
@@ -88,7 +88,7 @@ const fetch = (options) => {
  */
 export default function request(options) {
   if(options.url && options.url.indexOf('//') > -1) {
-    const origin = `${options.url.split('//')[0]}${options.url.split('//')[1].split('/')[0]}`
+    const origin = `${options.url.split('//')[0]}//${options.url.split('//')[1].split('/')[0]}`
     if(window.location.origin !== origin) {
       if(CORS && CORS.indexOf(origin) > -1) {
         options.fetchType = 'CORS'
@@ -127,6 +127,7 @@ export default function request(options) {
         statusCode = 600
         message = error.message || 'Network Error'
       }
+      Message({message, type: 'error'})
       return { success: false, statusCode, message }
     })
 }
