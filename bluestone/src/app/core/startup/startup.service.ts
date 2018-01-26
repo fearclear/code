@@ -61,7 +61,7 @@ export class StartupService {
         // }
         // mock
         const app: any = {
-            name: `ng-alain`,
+            name: `蓝石资管`,
             description: `Ng-zorro admin panel front-end framework`
         };
         const user: any = {
@@ -85,6 +85,11 @@ export class StartupService {
                     {
                         text: '仪表盘',
                         link: '/dashboard',
+                        icon: 'icon-speedometer'
+                    },
+                    {
+                        text: '测试菜单',
+                        link: '/trade/list',
                         icon: 'icon-speedometer'
                     },
                     {

@@ -2,7 +2,7 @@
   "name": "bluestone",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "ng-zorro-antd admin panel front-end framework",
+  "description": "bluestone",
   "engines": {
     "node": ">= 4.2.1",
     "npm": ">= 3"
@@ -12,6 +12,7 @@
     "precommit": "npm run lint-staged",
     "ng": "ng",
     "start": "ng serve -o",
+    "dev": "ng serve -o --hmr -e=hmr",
     "serve:hmr": "ng serve -o --hmr -e=hmr",
     "build": "ng build --prod --build-optimizer",
     "analyze": "ng build --prod --build-optimizer --stats-json",
