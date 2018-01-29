@@ -1,11 +1,14 @@
 import * as types from '../mutation-types'
 import md5 from 'md5'
+import router from '../../router'
+import { Message } from 'element-ui'
 import { clone } from 'lodash'
 import { signUp, signIn, checkUserName } from '../../service'
 
 // initial state
 // shape: [{ id, quantity }]
 const state = {
+  tabIndex: 'signIn',
   userInfo: {},
   signStatus: false
 }
@@ -13,36 +16,30 @@ const state = {
 // getters
 const getters = {
   userInfo: state => state.userInfo,
+  tabIndex: state => state.tabIndex,
   signStatus: state => state.signStatus
 }
 
 // actions
 const actions = {
-  signIn(form) {
+  signIn({ commit, state }, form) {
     let data = clone(form)
     data.password = md5(md5(md5(form.password)))
     signIn(data)
         .then(doc => {
-          this.$store.dispatch('updateUserInfo', doc)
-            .then((data) => {
-              console.log(data, 'data')
-              console.log(this.$store)
-            })
-        }, err => console.log(err))
-  },
-  signUp(form) {
-    this.$refs['formSignUp'].validate((valid) => {
-      if(valid) {
-        let data = clone(form)
-        data.password = data.passwordConfirm = md5(md5(md5(form.password)))
-        signUp(data)
-        .then(function() {
-          console.log('done')
+          commit(types.USER_INFO, doc)
         })
-      }else {
-        return false
-      }
-    })
+  },
+  signUp({ commit, state }, form) {
+    let data = clone(form)
+    data.password = data.passwordConfirm = md5(md5(md5(form.password)))
+    signUp(data)
+      .then(function() {
+        Message({message: '注册成功', type: 'success'})
+        setTimeout(() => {
+          router.push({path: '/home'})
+        }, 500)
+      })
   },
   checkUserName({ commit, state }, params) {
     return new Promise((resolve, reject) => {
@@ -53,6 +50,9 @@ const actions = {
   updateUserInfo({ commit, state }, userInfo) {
     commit(types.SIGN_STATUS, userInfo)
     commit(types.USER_INFO, userInfo)
+  },
+  changeTabIndex({ commit, state }, data) {
+    commit(types.TAB_INDEX, data.paneName)
   }
 }
 
@@ -63,6 +63,9 @@ const mutations = {
   },
   [types.USER_INFO](state, userInfo) {
     state.userInfo = userInfo
+  },
+  [types.TAB_INDEX](state, index) {
+    state.tabIndex = index
   }
 }
 

@@ -2,7 +2,7 @@
   <div class="form-wraper" :style="Kurumi">
     <div class="login-form">
       <div class="form-head">
-        <el-tabs value="signIn">
+        <el-tabs v-model="tabIndex" @tab-click="changeTabIndex" >
           <el-tab-pane label="登陆" name="signIn">
             <el-form :label-position="'top'" :model="form" ref="form" label-width="80px">
               <el-form-item label="用户名" prop="userName">
@@ -28,10 +28,10 @@
                 <el-input v-model="form.password" type="password" placeholder="请输入密码"></el-input>
               </el-form-item>
               <el-form-item label="确认密码" prop="passwordConfirm">
-                <el-input v-model="form.passwordConfirm" type="password" @keyup.enter.native="signUp(form)" placeholder="再次输入密码"></el-input>
+                <el-input v-model="form.passwordConfirm" type="password" @keyup.enter.native="signUpRule(form)" placeholder="再次输入密码"></el-input>
               </el-form-item>
               <el-form-item>
-                  <el-button class="sign-button" type="primary" @click="signUp(form)">注册</el-button>
+                  <el-button class="sign-button" type="primary" @click="signUpRule(form)">注册</el-button>
               </el-form-item>
             </el-form>
           </el-tab-pane>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     let checkPassword = (rule, value, callback) => {
@@ -73,7 +73,6 @@ export default {
       }
       this.checkUserName(params)
         .then(doc => {
-          console.log(doc)
           if(doc.success) {
             callback()
           }else {
@@ -109,10 +108,23 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters(['tabIndex'])
+  },
   methods: {
     ...mapActions(['signIn']),
     ...mapActions(['signUp']),
-    ...mapActions(['checkUserName'])
+    ...mapActions(['checkUserName']),
+    ...mapActions(['changeTabIndex']),
+    signUpRule(form) {
+      this.$refs['formSignUp'].validate((valid) => {
+        if(valid) {
+          this.signUp(form)
+        }else {
+          return false
+        }
+      })
+    }
   }
 }
 </script>
