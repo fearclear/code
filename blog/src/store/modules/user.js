@@ -1,66 +1,68 @@
 import * as types from '../mutation-types'
+import md5 from 'md5'
+import { clone } from 'lodash'
+import { signUp, signIn, checkUserName } from '../../service'
 
 // initial state
 // shape: [{ id, quantity }]
 const state = {
-  added: [],
-  checkoutStatus: null
+  userInfo: {},
+  signStatus: false
 }
 
 // getters
 const getters = {
-  checkoutStatus: state => state.checkoutStatus,
-
-  cartProducts: (state, getters, rootState) => {
-    return state.added.map(({ id, quantity }) => {
-      const product = rootState.products.all.find(product => product.id === id)
-      return {
-        title: product.title,
-        price: product.price,
-        quantity
-      }
-    })
-  },
-
-  cartTotalPrice: (state, getters) => {
-    return getters.cartProducts.reduce((total, product) => {
-      return total + product.price * product.quantity
-    }, 0)
-  }
+  userInfo: state => state.userInfo,
+  signStatus: state => state.signStatus
 }
 
 // actions
 const actions = {
-  checkout({ commit, state }, products) {
-    const savedCartItems = [...state.added]
-    console.log(savedCartItems)
-    commit(types.SET_CHECKOUT_STATUS, null)
-    // empty cart
-    commit(types.SET_CART_ITEMS, { items: [] })
+  signIn(form) {
+    let data = clone(form)
+    data.password = md5(md5(md5(form.password)))
+    signIn(data)
+        .then(doc => {
+          this.$store.dispatch('updateUserInfo', doc)
+            .then((data) => {
+              console.log(data, 'data')
+              console.log(this.$store)
+            })
+        }, err => console.log(err))
+  },
+  signUp(form) {
+    this.$refs['formSignUp'].validate((valid) => {
+      if(valid) {
+        let data = clone(form)
+        data.password = data.passwordConfirm = md5(md5(md5(form.password)))
+        signUp(data)
+        .then(function() {
+          console.log('done')
+        })
+      }else {
+        return false
+      }
+    })
+  },
+  checkUserName({ commit, state }, params) {
+    return new Promise((resolve, reject) => {
+      checkUserName(params)
+        .then(doc => resolve(doc), err => reject(err))
+    })
+  },
+  updateUserInfo({ commit, state }, userInfo) {
+    commit(types.SIGN_STATUS, userInfo)
+    commit(types.USER_INFO, userInfo)
   }
 }
 
 // mutations
 const mutations = {
-  [types.ADD_TO_CART](state, { id }) {
-    state.checkoutStatus = null
-    const record = state.added.find(product => product.id === id)
-    if(!record) {
-      state.added.push({
-        id,
-        quantity: 1
-      })
-    }else {
-      record.quantity++
-    }
+  [types.SIGN_STATUS](state, userInfo) {
+    state.signStatus = !!userInfo.userId
   },
-
-  [types.SET_CART_ITEMS](state, { items }) {
-    state.added = items
-  },
-
-  [types.SET_CHECKOUT_STATUS](state, status) {
-    state.checkoutStatus = status
+  [types.USER_INFO](state, userInfo) {
+    state.userInfo = userInfo
   }
 }
 

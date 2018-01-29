@@ -47,7 +47,7 @@ app.use(function(err, req, res, next) {
   // res.locals.error = req.app.get('env') === 'development' ? err : {}
   // render the error page
   // res.render('error')
-  console.log(err)
+  console.log(err, 'app')
   let status = err.status || 500
   let text = err.text || '服务器错误'
   res.status(status).send({

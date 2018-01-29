@@ -91,8 +91,34 @@ function signIn(req, res, next) {
       }, err => next(err))
   }
 }
+// 检查用户名
+function checkUserName(req, res, next) {
+  let data = req.query
+  if(!data.userName) {
+    next({
+      status: 400,
+      text: '用户名不存在'
+    })
+  }else {
+    dao.userInfo.getUser(data)
+      .then((doc) => {
+        if(doc) {
+          next({
+            status: 400,
+            text: '用户名已存在'
+          })
+        }else {
+          let data = {
+            text: '可以使用'
+          }
+          res.send(data)
+        }
+      }, err => next(err))
+  }
+}
 
 module.exports = {
   signUp, // 注册
-  signIn // 登陆
+  signIn, // 登陆
+  checkUserName // 检查用户名
 }

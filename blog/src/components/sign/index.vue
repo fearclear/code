@@ -9,7 +9,7 @@
                 <el-input v-model="form.userName" placeholder="请输入用户名"></el-input>
               </el-form-item>
               <el-form-item label="密码" prop="password">
-                <el-input v-model="form.password" type="password" placeholder="请输入密码"></el-input>
+                <el-input v-model="form.password" type="password" @keyup.enter.native="signIn(form)" placeholder="请输入密码"></el-input>
               </el-form-item>
               <el-form-item>
                   <el-button class="sign-button" type="primary" @click="signIn(form)">登陆</el-button>
@@ -28,7 +28,7 @@
                 <el-input v-model="form.password" type="password" placeholder="请输入密码"></el-input>
               </el-form-item>
               <el-form-item label="确认密码" prop="passwordConfirm">
-                <el-input v-model="form.passwordConfirm" type="password" placeholder="再次输入密码"></el-input>
+                <el-input v-model="form.passwordConfirm" type="password" @keyup.enter.native="signUp(form)" placeholder="再次输入密码"></el-input>
               </el-form-item>
               <el-form-item>
                   <el-button class="sign-button" type="primary" @click="signUp(form)">注册</el-button>
@@ -42,9 +42,7 @@
 </template>
 
 <script>
-import { signUp, signIn } from '../../service'
-import { clone } from 'lodash'
-import md5 from 'md5'
+import { mapActions } from 'vuex'
 export default {
   data() {
     let checkPassword = (rule, value, callback) => {
@@ -69,10 +67,19 @@ export default {
         callback()
       }
     }
-    let checkUserName = (rule, value, callback) => {
-      setTimeout(() => {
-        return callback()
-      }, 1000)
+    let checkUserNameValid = (rule, value, callback) => {
+      let params = {
+        userName: value
+      }
+      this.checkUserName(params)
+        .then(doc => {
+          console.log(doc)
+          if(doc.success) {
+            callback()
+          }else {
+            callback(new Error(doc.message))
+          }
+        })
     }
     return {
       Kurumi: {background: `url(${require('^/Kurumi.jpg')}) no-repeat`, backgroundSize: 'cover'},
@@ -89,7 +96,7 @@ export default {
         ],
         userName: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
-          { validator: checkUserName, trigger: 'blur' }
+          { validator: checkUserNameValid, trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
@@ -103,26 +110,9 @@ export default {
     }
   },
   methods: {
-    signUp(form) {
-      this.$refs['formSignUp'].validate((valid) => {
-        if(valid) {
-          let data = clone(form)
-          data.password = data.passwordConfirm = md5(md5(md5(form.password)))
-          signUp(data)
-          .then(function() {
-            console.log('done')
-          })
-        }else {
-          return false
-        }
-      })
-    },
-    signIn(form) {
-      let data = clone(form)
-      data.password = md5(md5(md5(form.password)))
-      signIn(data)
-          .then(doc => console.log(doc), err => console.log(err))
-    }
+    ...mapActions(['signIn']),
+    ...mapActions(['signUp']),
+    ...mapActions(['checkUserName'])
   }
 }
 </script>

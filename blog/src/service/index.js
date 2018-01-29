@@ -5,9 +5,10 @@
  * @author fearclear
  * @export service
  */
-import { signUp, signIn } from './sign'
+import { signUp, signIn, checkUserName } from './sign'
 
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  checkUserName
 }

@@ -1,5 +1,5 @@
-const sign = require('./sign')
+const user = require('./user')
 
 module.exports = {
-  sign
+  user
 }

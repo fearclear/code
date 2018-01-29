@@ -4,7 +4,8 @@ module.exports = {
   CORS: ['http://127.0.0.1:3000'],
   YQL: [''],
   API: {
-    signUpUrl: `${URL}/signUp`,
-    signInUrl: `${URL}/signIn`
+    signUpUrl: `${URL}/user/signUp`,
+    signInUrl: `${URL}/user/signIn`,
+    checkUserNameUrl: `${URL}/user/checkUserName`
   }
 }

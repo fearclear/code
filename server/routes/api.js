@@ -7,6 +7,6 @@ router.get('/', function(req, res, next) {
   res.send('404')
 })
 
-router.all('/sign:res?', fc.sign)
+router.use('/user', fc.user)
 
 module.exports = router

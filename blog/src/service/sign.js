@@ -3,12 +3,12 @@
  * @description 登陆相关请求
  * @name sign
  * @author fearclear
- * @export { signUp, signIn }
+ * @export { signUp, signIn, checkUserName }
  */
 import { request, config } from '../utils'
 
 const { API } = config
-const { signUpUrl, signInUrl } = API
+const { signUpUrl, signInUrl, checkUserNameUrl } = API
 
 async function signUp(data) {
   return request({
@@ -26,7 +26,16 @@ async function signIn(data) {
   })
 }
 
+async function checkUserName(data) {
+  return request({
+    url: checkUserNameUrl,
+    method: 'get',
+    data
+  })
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  checkUserName
 }
