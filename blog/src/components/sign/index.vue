@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   data() {
     let checkPassword = (rule, value, callback) => {
@@ -109,7 +109,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['tabIndex'])
+    tabIndex: {
+      get() {
+        return this.$store.state.user.tabIndex
+      },
+      set(value) {
+        this.$store.commit('TAB_INDEX', value)
+      }
+    }
   },
   methods: {
     ...mapActions(['signIn']),

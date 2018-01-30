@@ -28,6 +28,8 @@ const actions = {
     signIn(data)
         .then(doc => {
           commit(types.USER_INFO, doc)
+          Message({message: '登陆成功', type: 'success'})
+          router.push({path: '/home'})
         })
   },
   signUp({ commit, state }, form) {
@@ -36,9 +38,7 @@ const actions = {
     signUp(data)
       .then(function() {
         Message({message: '注册成功', type: 'success'})
-        setTimeout(() => {
-          router.push({path: '/home'})
-        }, 500)
+        commit(types.TAB_INDEX, 'signIn')
       })
   },
   checkUserName({ commit, state }, params) {
@@ -58,8 +58,8 @@ const actions = {
 
 // mutations
 const mutations = {
-  [types.SIGN_STATUS](state, userInfo) {
-    state.signStatus = !!userInfo.userId
+  [types.SIGN_STATUS](state, {userId}) {
+    state.signStatus = !!userId
   },
   [types.USER_INFO](state, userInfo) {
     state.userInfo = userInfo

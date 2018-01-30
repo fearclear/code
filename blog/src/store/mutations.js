@@ -6,17 +6,16 @@
  * @export {  }
  */
 
-import * as types from './mutation-types'
-console.log(types)
+// import * as types from './mutation-types'
 
 export default {
-  addTodo(state, { text }) {
-    state.todos.push({
-      text,
-      done: false
-    })
-  },
-  clearCompleted(state) {
-    state.todos = state.todos.filter(todo => !todo.done)
-  }
+  // addTodo(state, { text }) {
+  //   state.todos.push({
+  //     text,
+  //     done: false
+  //   })
+  // },
+  // clearCompleted(state) {
+  //   state.todos = state.todos.filter(todo => !todo.done)
+  // }
 }

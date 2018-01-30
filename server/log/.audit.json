@@ -1,0 +1,94 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 365
+    },
+    "auditLog": "d:\\self\\code\\server\\log/.audit.json",
+    "files": [
+        {
+            "date": 1517281980358,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log",
+            "hash": "4728ec61ec1bdfd427856500b5b1510e"
+        },
+        {
+            "date": 1517282248604,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.1",
+            "hash": "0054c4a03084333bd3e7f2e01b1f65f3"
+        },
+        {
+            "date": 1517282263521,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.2",
+            "hash": "68f63be78f6d3cf99732e1ad183b8690"
+        },
+        {
+            "date": 1517282294658,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.3",
+            "hash": "24f01dcd6788329a62f3851d666b5adb"
+        },
+        {
+            "date": 1517282404057,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.4",
+            "hash": "5de03cffbbc47f4d7ed22cd595181cd7"
+        },
+        {
+            "date": 1517282491162,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.5",
+            "hash": "50e98e464aeed7ce87928a1f57525524"
+        },
+        {
+            "date": 1517282558390,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.6",
+            "hash": "0002665625888f1bd9e96573c296e780"
+        },
+        {
+            "date": 1517282569749,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.7",
+            "hash": "c42e857cd5260ded4dc14c3ca21dc270"
+        },
+        {
+            "date": 1517282579566,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.8",
+            "hash": "f7fc1a87ee87fbee33a181951e6361b9"
+        },
+        {
+            "date": 1517282598302,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.9",
+            "hash": "fac317b2320f476372ba963b4b404eb9"
+        },
+        {
+            "date": 1517282752475,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.10",
+            "hash": "27a7992563d07919ef34e1d4c1930f36"
+        },
+        {
+            "date": 1517282774681,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.11",
+            "hash": "0fd8dabd98ac693c1291ebe07b5d1dfa"
+        },
+        {
+            "date": 1517282794730,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.12",
+            "hash": "28adb332f23a98c670310cabc5de814e"
+        },
+        {
+            "date": 1517282879283,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.13",
+            "hash": "480312224dce73a6517ea98132cc9ef1"
+        },
+        {
+            "date": 1517282938329,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.14",
+            "hash": "85306b3b0af5d128210b8b38d2c34cf7"
+        },
+        {
+            "date": 1517283031070,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.15",
+            "hash": "844d7422224d0b222c61454d660214bf"
+        },
+        {
+            "date": 1517283133116,
+            "name": "d:\\self\\code\\server\\log\\blog-2018-01-30_11.log.16",
+            "hash": "441398105d276a8f7ebfc0433442ef98"
+        }
+    ]
+}
