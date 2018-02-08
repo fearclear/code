@@ -27,9 +27,11 @@ const actions = {
     data.password = md5(md5(md5(form.password)))
     signIn(data)
         .then(doc => {
-          commit(types.USER_INFO, doc)
-          Message({message: '登陆成功', type: 'success'})
-          router.push({path: '/home'})
+          if(doc.success) {
+            Message({message: '登陆成功', type: 'success'})
+            router.push({path: '/home'})
+            commit(types.USER_INFO, doc)
+          }
         })
   },
   signUp({ commit, state }, form) {

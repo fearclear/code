@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './eleui.js'
+import './fa.less'
 
 Vue.config.productionTip = false
 

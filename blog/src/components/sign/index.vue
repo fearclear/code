@@ -142,7 +142,7 @@ export default {
   height: 100%;
 }
 .form-head{
-  font-size: 16px;
+  font-size: 22px;
   color: #606266;
   border-bottom: 1px solid #ddd;
 }

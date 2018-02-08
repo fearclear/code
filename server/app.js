@@ -66,7 +66,7 @@ app.use(function(err, req, res, next) {
   console.log(err, 'app')
   let status = err.status || 500
   let text = err.text || '服务器错误'
-  res.status(status).send({
+  res.send(status, {
     status,
     text
   })

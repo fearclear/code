@@ -10,6 +10,7 @@ import { YQL, CORS } from './config'
 import { Message } from 'element-ui'
 // 配置默认请求头
 axios.defaults.headers.common['x-fc-version'] = '1.0.0'
+axios.defaults.headers.common['x-fc-terminal'] = 'PC'
 // 配置post请求方式
 // axios.defaults.headers.post['Content-type'] = 'application/x-www-form-urlencoded;charset=utf-8'
 // axios.defaults.headers.put['Content-type'] = 'application/x-www-form-urlencoded;charset=utf-8'

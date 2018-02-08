@@ -2,7 +2,7 @@
   <el-container>
     <el-header>
         <el-row class="header">
-          <el-col :span="12">
+          <el-col :span="8">
             <el-row type="flex">
                 <h1 class="logo">
                   <a href="" class="ft-no-decoration logo-url">
@@ -11,7 +11,7 @@
                 </h1>
             </el-row>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="16">
             <el-menu
               default-active="1"
               mode="horizontal">
@@ -22,7 +22,16 @@
                 <el-menu-item index="2-2">选项2</el-menu-item>
                 <el-menu-item index="2-3">选项3</el-menu-item>
               </el-submenu>
-              <el-menu-item index="3">个人主页</el-menu-item>
+              <el-submenu index="3">
+                <template slot="title">系统管理员</template>
+                <el-menu-item index="3-1">
+                  <!-- <i class="el-icon-fa fa-user-o"></i> -->
+                  个人中心
+                </el-menu-item>
+                <el-menu-item index="3-2">123
+                </el-menu-item>
+                <el-menu-item index="3-3">选项3</el-menu-item>
+              </el-submenu>
             </el-menu>
             <el-autocomplete
             class="ml-10 header-search"
@@ -150,9 +159,9 @@ export default {
     letter-spacing: 2px;
   }
   .logo-img{
-    width: 50px;
-    height: 50px;
-    margin: 5px 0;
+    width: 45px;
+    height: 45px;
+    margin: 10px 0;
     border-radius: 30px;
     vertical-align: top;
   }
