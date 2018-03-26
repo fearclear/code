@@ -1,8 +1,8 @@
 /**
  * @namespace 登陆
- * @description 登陆逻辑
+ * @description 登陆逻辑，包含注册、注册、登录
  * @name signIn
- * @author fearclear
+ * @author fearclear <fearcleari@gmail.com>
  */
 const dao = require('../dao')
 
