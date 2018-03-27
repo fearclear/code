@@ -2,7 +2,7 @@
  * @namespace 用户模块
  * @description 用户的增删改查
  * @name fc_user_info
- * @author fearclear
+ * @author fearclear <fearcleari@gmail.com>
  * @export { addUser, getUser, updateUser, removeUser }
  */
 const { handleResult } = require('./util')

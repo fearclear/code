@@ -2,7 +2,7 @@
  * @namespace 数据库连接模块
  * @description 连接数据库
  * @name connection
- * @author fearclear
+ * @author fearclear <fearcleari@gmail.com>
  * @export { mongoose, connect, disconnect }
  */
 const mongoose = require('mongoose')

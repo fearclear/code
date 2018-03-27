@@ -2,11 +2,11 @@
  * @namespace 插件
  * @description 统一处理插件
  * @name util
- * @author fearclear
+ * @author fearclear <fearcleari@gmail.com>
  * @export { handleResult }
  */
 /**
- * @author fearclear
+ * @author fearclear <fearcleari@gamil.com>
  * @param {resolve} resolve
  * @param {reject} reject
  * @param {err} err
