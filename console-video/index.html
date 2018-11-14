@@ -1,0 +1,44 @@
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>default</title>
+</head>
+
+<body>
+  <video style="display: none" muted loop controls="controls" id="video"></video>
+
+  <script type="text/javascript">
+    var chartVideo = false
+    function checkConsole() {
+      if (window.outerWidth - window.innerWidth > 20 ||
+        window.outerHeight - window.innerHeight > 200) {
+        setTimeout(console.clear, 200)
+        if (!chartVideo) {
+          chartVideo = true
+          linkConsoleChart()
+        }
+      } else {
+        unLinkConsoleChart()
+      }
+    }
+    function linkConsoleChart() {
+      var script = document.createElement('script')
+      script.src = './index.js'
+      script.id = 'consoleChart'
+      document.body.append(script)
+    }
+    function unLinkConsoleChart() {
+      document.querySelector('#video').pause()
+      document.querySelector('#video').src = null
+      document.querySelector('#consoleChart').remove()
+      chartVideo = false
+    }
+    window.onresize = checkConsole
+    checkConsole()
+  </script>
+
+</body>
+
+</html>

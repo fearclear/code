@@ -1,56 +1,85 @@
-// 判断是否是数组
-function isArray(target) {
-  return Object.prototype.toString.call(target) === '[object Array]'
-}
+const _  = require('lodash')
 
-// 深度克隆函数
-function deepClone(target) {
-  // 处理circular对象
+function cloneDeep(target) {
   const parents = []
   function _clone(target) {
+    const type = Object.prototype.toString.call(target)
+    // circuler
     parents.push(target)
-    // 如果是基础数据类型或者是函数类型则返回本身
-    if (typeof target !== 'object' && typeof target !== 'function') {
+    // 基本数据类型和函数类型返回其本身
+    if(typeof target !== 'object') {
       return target
     }
-    // 如果是正则或时间格式也返回其本身
-    if (Object.prototype.toString.call(target) === '[object Date]' || Object.prototype.toString.call(target) === '[object RegExp]') {
+    // 正则和时间表达式和Primise返回其本身
+    if(type === '[object Date]' || type === '[object RegExp]' || type === '[object Promise]') {
       return target
     }
-    // 如果是数组则遍历数组，是对象则遍历对象
-    let tmp = isArray(target) ? [] : {}
-    for (const i in target) {
-      if (target.hasOwnProperty(i)) {
-        if(typeof target[i] === 'object' && parents.indexOf(target)<0) {
-          // 如果是仍然是对象则递归
-          tmp[i] = _clone(target[i])
+    // set和map
+    if(type === '[object Set]') {
+      let set = new Set()
+      for(let i of target) {
+        set.add(i)
+      }
+      return set
+    }
+    if(type === '[object Map]') {
+      let map = new Map()
+      for(let [key, value] of target) {
+        map.set(key, value)
+      }
+      return map
+    }
+    var temp = type === '[object Array]' ? [] : {}
+    for(let i in target) {
+      if(target.hasOwnProperty(i)) {
+        if(typeof target[i] === 'object') {
+          if(parents.indexOf(target[i])<0) {
+            temp[i] = _clone(target[i])
+          }else {
+            temp[i] = target[i]
+          }
         }else {
-          tmp[i] = target[i]
+          temp[i] = target[i]
         }
       }
     }
-    return tmp
+    return temp
   }
   return _clone(target)
 }
 
-// 测试用例
+
+
 const test = {
   a: 1,
   b: {
-    a: 1,
-    b: 2
+    b1: 1,
+    b2: 2
   },
-  c: [1, 22, {
-    a: 1,
-    b: 3
+  c: [1, 2, {
+    c1: 1,
+    c2: 2
   }],
-  d: new Date(),
-  e: /a/
+  d: /a/,
+  e: new Date(),
+  f: function() {},
+  s: new Set(),
+  m: new Map()
 }
 
-test.b.c = test.b
+test.b.b3 = test.c
+test.c[2].c3 = test.b
+test.s.add(1)
+test.s.add(2)
+test.m.set('a', 1)
+test.m.set('b', 1)
 
-const result = deepClone(test)
+let result = cloneDeep(test)
 
+test.s.add(3)
+test.m.set('c', 1)
+
+console.log(test)
 console.log(result)
+
+// console.log(_.cloneDeep(test))
