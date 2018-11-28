@@ -1,0 +1,17 @@
+<div class="full-screen page-content">
+  <div class="wrapper">
+    <img src="https://img.alicdn.com/tfs/TB1NvvIwTtYBeNjy1XdXXXXyVXa-89-131.svg" alt="" class="logo-img">
+    <div class="text-wrapper">
+      <h1 class="title-text">
+        Today
+      </h1>
+      <input nz-input [(ngModel)]="username" #usernameInput placeholder="请输入你喜欢的用户名">
+      <button (click)="completeSetup()" nz-button [disabled]="!usernameInput.value">开始</button>
+      <label nz-radio class="aa" [nzValue]="aa">aaaaaa</label>
+      
+      <div class="copy-right">
+        Copyright &copy; 2018 fearclear
+      </div>
+    </div>
+  </div>
+</div>
